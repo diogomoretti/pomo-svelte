@@ -1,6 +1,7 @@
 <script lang="ts">
   import { pomodoroState } from '../stores/pomodoro';
   import { convertMinutesToSeconds, convertSecondsToTime } from '$lib';
+  let isAnimating = $state(false);
 
   let remainingTime = $derived(convertMinutesToSeconds($pomodoroState.time));
   let percentage = $derived(remainingTime / convertMinutesToSeconds($pomodoroState.time));
@@ -8,16 +9,28 @@
   let interval = $state<number | null>(null);
   let INTERVAL_TIME: number = 1000;
 
+  function animate() {
+    isAnimating = true;
+    setTimeout(() => isAnimating = false, 200);
+  }
+
+  function clear() {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
+  }
+
   function setPomodoro(minutes: string) {
     pomodoroState.set({
       time: minutes,
     });
+    animate();
   }
 
   function startOrPausePomodoro() {
     if (interval) {
-      clearInterval(interval);
-      interval = null;
+      clear();
     } else {
       interval = setInterval(() => {
         remainingTime = remainingTime - 1;
@@ -31,10 +44,10 @@
 
   function resetPomodoro() {
     if (interval) {
-      clearInterval(interval);
-      interval = null;
+      clear();
     }
     remainingTime = convertMinutesToSeconds($pomodoroState.time);
+    animate();
   }
 </script>
 
@@ -44,7 +57,7 @@
 </svelte:head>
 
 <main>
-  <h1>{convertSecondsToTime(remainingTime)}</h1>
+  <h1 class:animate={isAnimating}>{convertSecondsToTime(remainingTime)}</h1>
 
   <div class="progress-bar" style="--percentage: {percentage * 100}%"></div>
 
@@ -123,6 +136,11 @@
   h1 {
     font-size: 4rem;
     margin: 0;
+    transition: transform 0.2s ease;
+  }
+
+  h1.animate {
+    transform: scale(1.05);
   }
 
   section {
