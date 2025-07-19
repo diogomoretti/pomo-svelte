@@ -32,10 +32,8 @@ pnpm install
 ### Development
 
 ```bash
-# Start development server
 pnpm dev
 ```
-
 
 ## 📚 What you'll learn
 
@@ -49,4 +47,4 @@ pnpm dev
 
 ## 📄 License
 
-MIT License - see [LICENSE](license.md) file for details.
+[MIT LICENSE](./license.md)
