@@ -13,9 +13,9 @@ A simple and elegant Pomodoro timer built with Svelte, perfect for learning the 
 - **[ESLint](https://eslint.org/)** - Code linting
 - **[pnpm](https://pnpm.io/)** - Package manager
 
-## ☸️ Architecture
+## ☸️ Components architecture
 
-[Coming soon]
+<img width="697" height="399" alt="image" src="https://github.com/user-attachments/assets/3657a886-ca10-443e-913d-34b3c9a2dcbd" />
 
 ## 🛠️ How to Run
 
