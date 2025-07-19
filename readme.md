@@ -21,16 +21,11 @@ A simple and elegant Pomodoro timer built with Svelte, perfect for learning the 
 
 ### Prerequisites
 
-Make sure you have Node.js installed (version 18 or higher).
+Make sure you have Node.js installed (version 18 or higher). I'm using [pnpm](https://pnpm.io/) as package manager, but you can use npm or yarn if you prefer.
 
 ### Installation
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd pomo-svelte
-
-# Install dependencies
 pnpm install
 ```
 
@@ -39,20 +34,8 @@ pnpm install
 ```bash
 # Start development server
 pnpm dev
-
-# Or start and open in browser automatically
-pnpm dev -- --open
 ```
 
-### Production Build
-
-```bash
-# Create production build
-pnpm build
-
-# Preview production build
-pnpm preview
-```
 
 ## 📚 What you'll learn
 
